@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+		<link rel="stylesheet" href="../static/home_page.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+  </body>
+  <a href="{{ url_for('views.home_page') }}" class="btn btn-primary">Back to Main Page</a>
+  <a href="{{ url_for('views.matches') }}" class="btn btn-primary">Back to Potential Matches</a>
+   <a href="{{ url_for('views.disliked_profiles') }}" class="btn btn-primary">Disliked Profiles</a>
+    <h1>Blocked Profiles</h1>
+    <div class="profiles">
+        {% for user in blocked_users %}
+            <div class="profile">
+                <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                <p>Gender: {{ user.gender }}</p>
+                <p>Age: {{ user.age }}</p>
+                <p>Zodiac Sign: {{ user.zodiac_sign }}</p>
+                <p>Preference: {{ user.preference }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+</body>
